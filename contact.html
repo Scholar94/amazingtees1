@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Amazing Tees Schools</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Color Variables */
+        :root {
+            --green: #4CAF50;
+            --light-green: #E8F5E9;
+            --lilac: #C8A2C8;
+            --light-lilac: #F3E8FD;
+            --dark-text: #333;
+            --light-text: #666;
+            --white: #ffffff;
+        }
+        
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark-text);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 15px;
+            color: var(--green);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--green);
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: var(--lilac);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--green);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .btn:hover {
+            background: var(--lilac);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--green);
+            color: var(--green);
+        }
+        
+        .btn-outline:hover {
+            background: var(--green);
+            color: white;
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            margin: 0;
+            color: var(--green);
+        }
+        
+        .logo span {
+            color: var(--lilac);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            font-weight: 500;
+        }
+        
+        nav ul li a.active {
+            color: var(--lilac);
+            border-bottom: 2px solid var(--lilac);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, var(--light-green), var(--light-lilac));
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            color: var(--light-text);
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 50px 0;
+        }
+        
+        @media (max-width: 900px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .contact-info {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contact-form {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--light-lilac);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--lilac);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .info-content h3 {
+            margin-bottom: 5px;
+            color: var(--lilac);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--lilac);
+            box-shadow: 0 0 0 2px rgba(200, 162, 200, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Campuses Section */
+        .campuses {
+            margin: 50px 0;
+        }
+        
+        .campuses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .campus-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .campus-image {
+            height: 180px;
+            background: var(--light-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green);
+            font-size: 2rem;
+        }
+        
+        .campus-info {
+            padding: 20px;
+        }
+        
+        .campus-info h3 {
+            color: var(--lilac);
+            margin-bottom: 10px;
+        }
+        
+        .campus-meta {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        .campus-meta i {
+            margin-right: 5px;
+            color: var(--green);
+        }
+        
+        /* FAQ Section */
+        .faq {
+            background: var(--light-lilac);
+            padding: 60px 0;
+            margin: 50px 0;
+            border-radius: 10px;
+        }
+        
+        .faq h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 200px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        /* Map Section */
+        .map-section {
+            margin: 50px 0;
+        }
+        
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 400px;
+            background: var(--light-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green);
+            font-size: 1.5rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(to right, var(--green), var(--lilac));
+            padding: 60px 0;
+            text-align: center;
+            color: white;
+            border-radius: 10px;
+            margin: 50px 0;
+        }
+        
+        .cta h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta .btn {
+            background: white;
+            color: var(--green);
+        }
+        
+        .cta .btn:hover {
+            background: var(--light-lilac);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--lilac);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .info-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .info-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Amazing <span>Tees</span> Schools</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Programs</a></li>
+                    <li><a href="#">Calendar</a></li>
+                    <li><a href="#">Progress</a></li>
+                    <li><a href="#" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Contact Amazing Tees Schools</h2>
+            <p>We're here to answer your questions and help you learn more about our educational programs</p>
+            <a href="#contact" class="btn">Get In Touch</a>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-container">
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                <p>We'd love to hear from you. Choose the most convenient way to contact us.</p>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Visit Us</h3>
+                        <p>123 Education Lane<br>Learning City, LC 12345</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Call Us</h3>
+                        <p>Main: (555) 123-4567<br>Admissions: (555) 123-ADMIT</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Email Us</h3>
+                        <p>info@amazingtees.edu<br>admissions@amazingtees.edu</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Office Hours</h3>
+                        <p>Monday-Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2>Send Us a Message</h2>
+                <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+                
+                <form id="schoolContactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="interest">I'm interested in:</label>
+                        <select id="interest" class="form-control" required>
+                            <option value="">Select a program</option>
+                            <option value="nursery">Nursery</option>
+                            <option value="preschool">Preschool</option>
+                            <option value="kindergarten">Kindergarten</option>
+                            <option value="primary">Primary School</option>
+                            <option value="highschool">High School</option>
+                            <option value="other">Other Information</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" class="form-control" placeholder="How can we help you?" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Campuses Section -->
+        <section class="campuses">
+            <h2>Our Campuses</h2>
+            <p>Amazing Tees Schools has multiple campuses tailored to different age groups and programs</p>
+            
+            <div class="campuses-grid">
+                <div class="campus-card">
+                    <div class="campus-image">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <div class="campus-info">
+                        <h3>Early Childhood Campus</h3>
+                        <p>Dedicated to our Nursery, Preschool and Kindergarten programs with specially designed facilities for young learners.</p>
+                        <div class="campus-meta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Early Learning Drive</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="campus-card">
+                    <div class="campus-image">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="campus-info">
+                        <h3>Primary School Campus</h3>
+                        <p>Our elementary school campus features modern classrooms, science labs, and extensive play areas.</p>
+                        <div class="campus-meta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>456 Primary Avenue</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="campus-card">
+                    <div class="campus-image">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="campus-info">
+                        <h3>High School Campus</h3>
+                        <p>State-of-the-art facilities including science laboratories, sports complex, and performing arts center.</p>
+                        <div class="campus-meta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>789 Scholars Boulevard</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What are the school hours?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Nursery and Preschool: 8:30 AM - 12:30 PM<br>
+                    Kindergarten: 8:00 AM - 2:00 PM<br>
+                    Primary School: 8:00 AM - 3:00 PM<br>
+                    High School: 8:00 AM - 3:30 PM</p>
+                </div>
+            </div>
+            
+            
