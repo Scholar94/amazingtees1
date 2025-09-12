@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazing Tees Schools - Excellence in Education</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #2E8B57;
+            --light-green: #9fdfbf;
+            --primary-lilac: #B19CD9;
+            --light-lilac: #d8c9f0;
+            --dark-text: #333;
+            --light-text: #fff;
+            --gray-bg: #f8f9fa;
+            --border-radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark-text);
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary-green), var(--primary-lilac));
+            color: var(--light-text);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 70px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo h1 {
+            font-size: 2.2rem;
+            margin: 0;
+        }
+        
+        .logo span {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-login {
+            background-color: var(--light-lilac);
+            color: var(--dark-text);
+        }
+        
+        .btn-login:hover {
+            background-color: var(--primary-lilac);
+            color: white;
+        }
+        
+        .btn-register {
+            background-color: var(--light-green);
+            color: var(--dark-text);
+        }
+        
+        .btn-register:hover {
+            background-color: var(--primary-green);
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 10px;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(46, 139, 87, 0.8), rgba(177, 156, 217, 0.8));
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn-hero {
+            background-color: var(--primary-lilac);
+            color: white;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+        }
+        
+        .btn-hero:hover {
+            background-color: var(--primary-green);
+        }
+        
+        /* Sections */
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-green);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-green), var(--primary-lilac));
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        /* Programs */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .program-img {
+            height: 200px;
+            background-color: var(--light-lilac);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-lilac);
+            font-size: 3rem;
+        }
+        
+        .program-content {
+            padding: 20px;
+        }
+        
+        .program-content h3 {
+            color: var(--primary-green);
+            margin-bottom: 15px;
+        }
+        
+        /* Portal Section */
+        .portal-section {
+            background-color: var(--gray-bg);
+        }
+        
+        .portal-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .portal-card {
+            background: linear-gradient(145deg, var(--primary-green), var(--primary-lilac));
+            color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portal-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .portal-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .portal-card p {
+            margin-bottom: 20px;
+        }
+        
+        /* Results */
+        .results-section {
+            background-color: white;
+        }
+        
+        .results-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .result-card {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--gray-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .result-card h3 {
+            color: var(--primary-lilac);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-lilac);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, var(--primary-green), var(--primary-lilac));
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: white;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            padding-left: 5px;
+            opacity: 0.8;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            width: 100%;
+            max-width: 500px;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: var(--dark-text);
+        }
+        
+        .modal-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-green);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+        
+        .form-submit {
+            background: linear-gradient(to right, var(--primary-green), var(--primary-lilac));
+            color: white;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap" style="font-size: 3rem; color: white; margin-right: 15px;"></i>
+                    <div class="logo-text">
+                        <h1>Amazing Tees Schools</h1>
+                        <span>Pre School - Kindergarten - Nursery - Primary - High School</span>
+                    </div>
+                </div>
+                <div class="auth-buttons">
+                    <button class="btn btn-login" onclick="openModal('loginModal')"><i class="fas fa-user"></i> Parent/Student Login</button>
+                    <button class="btn btn-register" onclick="openModal('registerModal')"><i class="fas fa-user-plus"></i> Register</button>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="#programs"><i class="fas fa-graduation-cap"></i> Programs</a></li>
+                    <li><a href="classes.html"><i class="fas fa-chalkboard-teacher"></i> Classes</a></li>
+                    <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a></li>
+                    <li><a href="calender.html"><i class="fas fa-calendar-alt"></i> Calendar</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Welcome to Amazing Tees Schools</h2>
+            <p>Grooming the Future Achievers.</p>
+            <button class="btn btn-hero">Explore Our Programs</button>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs-section">
+        <div class="container">
+            <h2 class="section-title">Our Educational Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-img">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Pre School</h3>
+                        <p>Our Pre School program provides a nurturing environment for children ages 2-4, focusing on early development through play-based learning.</p>
+                        <button class="btn btn-login">Learn More</button>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Kindergarten</h3>
+                        <p>Our Kindergarten program prepares children ages 4-6 for primary education with a balanced curriculum of academics and social development.</p>
+                        <button class="btn btn-login">Learn More</button>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img">
+                        <i class="fas fa-crayon"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Nursery</h3>
+                        <p>Our Nursery program offers a safe and stimulating environment for toddlers to explore, learn and develop essential skills.</p>
+                        <button class="btn btn-login">Learn More</button>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>Primary School</h3>
+                        <p>Our Primary School program provides a strong academic foundation for children in grades 1-6 with a comprehensive curriculum.</p>
+                        <button class="btn btn-login">Learn More</button>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <div class="program-content">
+                        <h3>High School</h3>
+                        <p>Our High School program prepares students for higher education and future careers with specialized courses and college counseling.</p>
+                        <button class="btn btn-login">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portal Section -->
+    <section class="portal-section">
+        <div class="container">
+            <h2 class="section-title">Parent & Student Portals</h2>
+            <div class="portal-cards">
+                <div class="portal-card">
+                    <div class="portal-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Parent Portal</h3>
+                    <p>Access your child's progress, attendance, assignments, and communicate with teachers.</p>
+                    <button class="btn" onclick="openModal('loginModal')">Login to Parent Portal</button>
+                </div>
+                <div class="portal-card">
+                    <div class="portal-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Student Portal</h3>
+                    <p>Access assignments, grades, resources, and communicate with teachers and classmates.</p>
+                    <button class="btn" onclick="openModal('loginModal')">Login to Student Portal</button>
+                </div>
+                <div class="portal-card">
+                    <div class="portal-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Results Portal</h3>
+                    <p>View and download academic results, report cards, and performance analysis.</p>
+                    <button class="btn" onclick="openModal('loginModal')">Check Results</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section">
+        <div class="container">
+            <h2 class="section-title">Academic Progress & Results</h2>
+            <div class="results-container">
+                <div class="result-card">
+                    <h3>Recent Results</h3>
+                    <p>View the latest examination results and academic performance reports for all classes.</p>
+                    <button class="btn btn-login">View Results</button>
+                </div>
+                <div class="result-card">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your child's academic progress over time with our detailed tracking system.</p>
+                    <button class="btn btn-login">Track Progress</button>
+                </div>
+                <div class="result-card">
+                    <h3>Report Cards</h3>
+                    <p>Access and download digital report cards for current and previous terms.</p>
+                    <button class="btn btn-login">Get Report Cards</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Amazing Tees Schools</h3>
+                    <p>Providing quality education from Pre School to High School with a focus on holistic development and academic excellence.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Programs</a></li>
+                        <li><a href="#">Admissions</a></li>
+                        <li><a href="#">Calendar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Education Street, Knowledge City</li>
+                        <li><i class="fas fa-phone"></i> +1 (234) 567-8901</li>
+                        <li><i class="fas fa-envelope"></i> info@amazingtees.edu</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Amazing Tees Schools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
+            <h2 class="modal-title">Parent/Student Login</h2>
+            <form>
+                <div class="form-group">
+                    <label for="login-username">Username/Email</label>
+                    <input type="text" id="login-username" placeholder="Enter your username or email">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Enter your password">
+                </div>
+                <button type="submit" class="form-submit">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 20px;">
+                <a href="#" style="color: var(--primary-lilac);">Forgot Password?</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('registerModal')">&times;</span>
+            <h2 class="modal-title">Create Account</h2>
+            <form>
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email Address</label>
+                    <input type="email" id="register-email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="register-phone">Phone Number</label>
+                    <input type="tel" id="register-phone" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm">Confirm Password</label>
+                    <input type="password" id="register-confirm" placeholder="Confirm your password">
+                </div>
+                <button type="submit" class="form-submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        // Close modal when clicking outside of modal content
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+        
+        // Simple form validation example
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.querySelector('#loginModal form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const username = document.getElementById('login-username').value;
+                    const password = document.getElementById('login-password').value;
+                    
+                    if (username && password) {
+                        alert('Login successful! Redirecting to portal...');
+                        closeModal('loginModal');
+                    } else {
+                        alert('Please fill in all fields');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

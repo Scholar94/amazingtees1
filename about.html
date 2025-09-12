@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Amazing Tees Schools</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Color Variables */
+        :root {
+            --green: #4CAF50;
+            --light-green: #E8F5E9;
+            --lilac: #C8A2C8;
+            --light-lilac: #F3E8FD;
+            --dark-text: #333;
+            --light-text: #666;
+            --white: #ffffff;
+        }
+        
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark-text);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 15px;
+            color: var(--green);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--green);
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: var(--lilac);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--green);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .btn:hover {
+            background: var(--lilac);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--green);
+            color: var(--green);
+        }
+        
+        .btn-outline:hover {
+            background: var(--green);
+            color: white;
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            margin: 0;
+            color: var(--green);
+        }
+        
+        .logo span {
+            color: var(--lilac);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            font-weight: 500;
+        }
+        
+        nav ul li a.active {
+            color: var(--lilac);
+            border-bottom: 2px solid var(--lilac);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, var(--light-green), var(--light-lilac));
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            color: var(--light-text);
+        }
+        
+        /* Mission Section */
+        .mission {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 50px 0;
+            align-items: center;
+        }
+        
+        @media (max-width: 900px) {
+            .mission {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .mission-content {
+            padding-right: 20px;
+        }
+        
+        .mission-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: var(--light-lilac);
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--lilac);
+            font-size: 3rem;
+        }
+        
+        /* Values Section */
+        .values {
+            margin: 50px 0;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .value-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--light-lilac);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--lilac);
+            font-size: 2rem;
+        }
+        
+        /* Schools Section */
+        .schools {
+            margin: 50px 0;
+        }
+        
+        .schools-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--light-lilac);
+            flex-wrap: wrap;
+        }
+        
+        .school-tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-weight: 500;
+        }
+        
+        .school-tab.active {
+            border-bottom: 3px solid var(--lilac);
+            color: var(--lilac);
+        }
+        
+        .school-content {
+            display: none;
+        }
+        
+        .school-content.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        @media (max-width: 900px) {
+            .school-content.active {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .school-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: var(--light-green);
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green);
+            font-size: 2.5rem;
+        }
+        
+        /* Leadership Section */
+        .leadership {
+            margin: 50px 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .member-image {
+            height: 200px;
+            background: var(--light-lilac);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--lilac);
+            font-size: 2rem;
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-role {
+            color: var(--lilac);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: var(--light-lilac);
+            padding: 60px 0;
+            margin: 50px 0;
+            border-radius: 10px;
+        }
+        
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .testimonial-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .testimonial-text:before {
+            content: """;
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: var(--lilac);
+            font-family: Arial;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--green);
+        }
+        
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(to right, var(--green), var(--lilac));
+            padding: 60px 0;
+            text-align: center;
+            color: white;
+            border-radius: 10px;
+            margin: 50px 0;
+        }
+        
+        .cta h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta .btn {
+            background: white;
+            color: var(--green);
+        }
+        
+        .cta .btn:hover {
+            background: var(--light-lilac);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Amazing <span>Tees</span> Schools</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#" class="active">About</a></li>
+                    <li><a href="#">Programs</a></li>
+                    <li><a href="#">Calendar</a></li>
+                    <li><a href="#">Progress</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>About Amazing Tees Schools</h2>
+            <p>Where young minds grow, learn, and flourish in a nurturing environment from preschool through high school</p>
+            <a href="#mission" class="btn">Discover Our Story</a>
+        </section>
+
+        <!-- Mission Section -->
+        <section id="mission" class="mission">
+            <div class="mission-content">
+                <h2>Our Mission & Vision</h2>
+                <p>At Amazing Tees Schools, our mission is to provide a transformative educational experience that nurtures curiosity, fosters creativity, and builds character in students from their earliest years through adolescence.</p>
+                <p>We believe in educating the whole child - intellectually, socially, emotionally, and physically - through a balanced approach that combines academic excellence with character development.</p>
+                <p>Our vision is to create a community of lifelong learners who are prepared to meet the challenges of a changing world with confidence, compassion, and critical thinking skills.</p>
+                <a href="#" class="btn">Learn About Our Philosophy</a>
+            </div>
+            <div class="mission-image">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values">
+            <h2>Our Core Values</h2>
+            <p>These fundamental principles guide everything we do at Amazing Tees Schools</p>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Nurturing Environment</h3>
+                    <p>We create a safe, supportive atmosphere where every child feels valued and encouraged to explore.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Curiosity & Creativity</h3>
+                    <p>We foster imagination and inquisitive thinking through hands-on learning experiences.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>We build strong partnerships between students, parents, teachers, and the wider community.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>We strive for excellence in all areas while recognizing each child's unique talents and abilities.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schools Section -->
+        <section class="schools">
+            <h2>Our Schools</h2>
+            <p>Amazing Tees Schools provides continuous education from early childhood through high school</p>
+            
+            <div class="schools-tabs">
+                <div class="school-tab active" data-school="nursery">Nursery</div>
+                <div class="school-tab" data-school="preschool">Preschool</div>
+                <div class="school-tab" data-school="kindergarten">Kindergarten</div>
+                <div class="school-tab" data-school="primary">Primary School</div>
+                <div class="school-tab" data-school="highschool">High School</div>
+            </div>
+            
+            <div class="school-content active" id="nursery-content">
+                <div class="school-info">
+                    <h3>Nursery Program</h3>
+                    <p>Our nursery program provides the youngest learners (ages 1-2) with a warm, secure environment that feels like a home away from home. We focus on developing trust, security, and early sensory experiences.</p>
+                    <ul>
+                        <li>Safe, nurturing environment with low child-to-teacher ratios</li>
+                        <li>Focus on sensory development and motor skills</li>
+                        <li>Gentle introduction to social interactions</li>
+                        <li>Regular communication with parents about development</li>
+                    </ul>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="school-image">
+                    <i class="fas fa-baby"></i>
+                </div>
+            </div>
+            
+            <div class="school-content" id="preschool-content">
+                <div class="school-info">
+                    <h3>Preschool Program</h3>
+                    <p>Our preschool program (ages 2-3) builds on the foundation of the nursery years with more structured play and early learning activities that prepare children for kindergarten.</p>
+                    <ul>
+                        <li>Introduction to letters, numbers, colors, and shapes</li>
+                        <li>Development of social skills through group activities</li>
+                        <li>Focus on independence and self-help skills</li>
+                        <li>Creative expression through art, music, and movement</li>
+                    </ul>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="school-image">
+                    <i class="fas fa-puzzle-piece"></i>
+                </div>
+            </div>
+            
+            <div class="school-content" id="kindergarten-content">
+                <div class="school-info">
+                    <h3>Kindergarten Program</h3>
+                    <p>Our kindergarten program (ages 4-5) provides a balanced approach to learning that combines play-based activities with more structured academic preparation for primary school.</p>
+                    <ul>
+                        <li>Phonics-based reading readiness program</li>
+                        <li>Introduction to mathematical concepts</li>
+                        <li>Science exploration and discovery</li>
+                        <li>Development of critical thinking and problem-solving skills</li>
+                    </ul>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="school-image">
+                    <i class="fas fa-book-open"></i>
+                </div>
+            </div>
+            
+            <div class="school-content" id="primary-content">
+                <div class="school-info">
+                    <h3>Primary School</h3>
+                    <p>Our primary school (Grades 1-6) builds a strong academic foundation while encouraging curiosity and a love of learning through engaging, hands-on experiences.</p>
+                    <ul>
+                        <li>Comprehensive curriculum meeting national standards</li>
+                        <li>Specialized instruction in art, music, and physical education</li>
+                        <li>Technology integration across all subject areas</li>
+                        <li>Character education and leadership opportunities</li>
+                    </ul>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="school-image">
+                    <i class="fas fa-school"></i>
+                </div>
+            </div>
+            
+            <div class="school-content" id="highschool-content">
+                <div class="school-info">
+                    <h3>High School</h3>
+                    <p>Our high school (Grades 7-12) prepares students for college and beyond through rigorous academics, diverse extracurricular opportunities, and personalized guidance.</p>
+                    <ul>
+                        <li>College preparatory curriculum with Advanced Placement courses</li>
+                        <li>STEM specialization programs</li>
+                        <li>Arts and humanities tracks</li>
+                        <li>College counseling and career guidance</li>
+                    </ul>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="school-image">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership Section -->
+        <section class="leadership">
+            <h2>Our Leadership Team</h2>
+            <p>Meet the dedicated educators who guide Amazing Tees Schools</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>Dr. Sarah Johnson</h3>
+                        <div class="member-role">Head of Schools</div>
+                        <p>With over 20 years in education, Dr. Johnson leads our community with vision and compassion.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>Mr. Robert Chen</h3>
+                        <div class="member-role">Principal, Early Childhood Division</div>
+                        <p>Specializing in early childhood development, Mr. Chen creates nurturing environments for our youngest learners.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>Ms. Angela Davis</h3>
+                        <div class="member-role">Principal, Primary School</div>
+                        <p>Ms. Davis brings innovation and energy to our primary program, focusing on holistic education.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>Mr. James Wilson</h3>
+                        <div class="member-role">Principal, High School</div>
+                        <p>With a background in college counseling, Mr. Wilson prepares our students for future success.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <h2>What Parents Say</h2>
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Amazing Tees Schools has been a blessing for our family. Our children have thrived in the nurturing environment and are excited to go to school every day.</p>
+                    <div class="testimonial-author">The Johnson Family</div>
+                    <div class="testimonial-role">Parents of Preschool and Primary Students</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">The teachers at Amazing Tees are exceptional. They recognize each child's unique strengths and challenges and provide personalized support.</p>
+                    <div class="testimonial-author">Maria Rodriguez</div>
+                    <div class="testimonial-role">Parent of Kindergarten Student</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">We've seen such growth in our son since he started at Amazing Tees. The balanced approach to academics and social development is exactly what we were looking for.</p>
+                    <div class="testimonial-author">James and Sarah Thompson</div>
+                    <div class="testimonial-role">Parents of High School Student</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <h2>Experience the Amazing Tees Difference</h2>
+            <p>Schedule a tour today to visit our campuses, meet our teachers, and discover how we can help your child reach their full potential.</p>
+            <a href="#" class="btn">Schedule a Visit</a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Amazing Tees Schools</h3>
+                    <p>Providing quality education from preschool through high school in a nurturing and stimulating environment.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Academic Programs</a></li>
+                        <li><a href="#">Admissions Process</a></li>
+                        <li><a href="#">School Policies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>123 Education Lane<br>Learning City, LC 12345<br>Phone: (555) 123-4567<br>Email: info@amazingtees.edu</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Amazing Tees Schools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality for Schools section
+        document.addEventListener('DOMContentLoaded', function() {
+            const schoolTabs = document.querySelectorAll('.school-tab');
+            const schoolContents = document.querySelectorAll('.school-content');
+            
+            schoolTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const schoolId = this.getAttribute('data-school');
+                    
+                    // Remove active class from all tabs and contents
+                    schoolTabs.forEach(t => t.classList.remove('active'));
+                    schoolContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to current tab and content
+                    this.classList.add('active');
+                    document.getElementById(schoolId + '-content').classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
