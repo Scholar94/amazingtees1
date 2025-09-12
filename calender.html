@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Calendar - Amazing Tees Schools</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Color Variables */
+        :root {
+            --green: #4CAF50;
+            --light-green: #E8F5E9;
+            --lilac: #C8A2C8;
+            --light-lilac: #F3E8FD;
+            --dark-text: #333;
+            --light-text: #666;
+            --white: #ffffff;
+        }
+        
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark-text);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 15px;
+            color: var(--green);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--green);
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: var(--lilac);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--green);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .btn:hover {
+            background: var(--lilac);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--green);
+            color: var(--green);
+        }
+        
+        .btn-outline:hover {
+            background: var(--green);
+            color: white;
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            margin: 0;
+            color: var(--green);
+        }
+        
+        .logo span {
+            color: var(--lilac);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            font-weight: 500;
+        }
+        
+        nav ul li a.active {
+            color: var(--lilac);
+            border-bottom: 2px solid var(--lilac);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, var(--light-green), var(--light-lilac));
+            padding: 40px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            color: var(--light-text);
+        }
+        
+        /* Filters Section */
+        .filters {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 20px 0;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            background: var(--light-lilac);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active {
+            background: var(--lilac);
+            color: white;
+        }
+        
+        .filter-btn:hover {
+            background: var(--lilac);
+            color: white;
+        }
+        
+        /* Calendar Section */
+        .calendar {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        @media (max-width: 900px) {
+            .calendar {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .calendar-sidebar {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+        }
+        
+        .month-selector {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .month-nav {
+            background: var(--light-green);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .month-nav:hover {
+            background: var(--green);
+            color: white;
+        }
+        
+        .mini-calendar {
+            margin-bottom: 30px;
+        }
+        
+        .mini-calendar h4 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: var(--lilac);
+        }
+        
+        .mini-calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        
+        .mini-calendar-day {
+            text-align: center;
+            padding: 8px 5px;
+            font-size: 0.8rem;
+        }
+        
+        .mini-calendar-day.header {
+            font-weight: bold;
+            color: var(--lilac);
+        }
+        
+        .mini-calendar-day.active {
+            background: var(--green);
+            color: white;
+            border-radius: 50%;
+        }
+        
+        .mini-calendar-day.event {
+            color: var(--green);
+            font-weight: bold;
+        }
+        
+        .upcoming-events h3 {
+            color: var(--lilac);
+            border-bottom: 2px solid var(--light-lilac);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .event-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .event-date {
+            font-weight: bold;
+            color: var(--green);
+        }
+        
+        .event-title {
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+        
+        .event-desc {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+        
+        .calendar-main {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .view-options {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .view-btn {
+            padding: 5px 15px;
+            background: var(--light-green);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .view-btn.active {
+            background: var(--green);
+            color: white;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+        
+        .calendar-day {
+            min-height: 100px;
+            padding: 10px;
+            border-radius: 5px;
+            background: var(--light-lilac);
+            position: relative;
+        }
+        
+        .calendar-day.header {
+            background: var(--light-green);
+            text-align: center;
+            font-weight: bold;
+            min-height: auto;
+            padding: 15px 10px;
+            color: var(--green);
+        }
+        
+        .day-number {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .calendar-event {
+            background: var(--green);
+            color: white;
+            padding: 5px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        
+        .calendar-event.preschool {
+            background: #8BC34A;
+        }
+        
+        .calendar-event.kindergarten {
+            background: #CDDC39;
+        }
+        
+        .calendar-event.nursery {
+            background: #FFC107;
+            color: #333;
+        }
+        
+        .calendar-event.primary {
+            background: #FF9800;
+            color: white;
+        }
+        
+        .calendar-event.highschool {
+            background: #F44336;
+            color: white;
+        }
+        
+        /* Event Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--light-text);
+        }
+        
+        .event-detail {
+            margin-top: 20px;
+        }
+        
+        .event-detail h3 {
+            color: var(--lilac);
+        }
+        
+        .event-meta {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .calendar-grid {
+                gap: 5px;
+            }
+            
+            .calendar-day {
+                min-height: 80px;
+                padding: 5px;
+                font-size: 0.8rem;
+            }
+            
+            .calendar-event {
+                font-size: 0.7rem;
+                padding: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Amazing <span>Tees</span> Schools</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Programs</a></li>
+                    <li><a href="#" class="active">Calendar</a></li>
+                    <li><a href="#">Admissions</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>School Calendar & Events</h2>
+            <p>Stay updated with all important dates, events, and activities across all levels of Amazing Tees Schools</p>
+            <a href="#calendar" class="btn">View Calendar</a>
+        </section>
+
+        <!-- Filters Section -->
+        <section class="filters">
+            <h3>Filter Events by School Level</h3>
+            <div class="filter-options">
+                <button class="filter-btn active">All Events</button>
+                <button class="filter-btn">Preschool</button>
+                <button class="filter-btn">Kindergarten</button>
+                <button class="filter-btn">Nursery</button>
+                <button class="filter-btn">Primary</button>
+                <button class="filter-btn">High School</button>
+            </div>
+        </section>
+
+        <!-- Calendar Section -->
+        <section id="calendar" class="calendar">
+            <!-- Sidebar -->
+            <div class="calendar-sidebar">
+                <div class="month-selector">
+                    <div class="month-nav"><i class="fas fa-chevron-left"></i></div>
+                    <h3>September 2023</h3>
+                    <div class="month-nav"><i class="fas fa-chevron-right"></i></div>
+                </div>
+
+                <div class="mini-calendar">
+                    <h4>September 2023</h4>
+                    <div class="mini-calendar-grid">
+                        <div class="mini-calendar-day header">S</div>
+                        <div class="mini-calendar-day header">M</div>
+                        <div class="mini-calendar-day header">T</div>
+                        <div class="mini-calendar-day header">W</div>
+                        <div class="mini-calendar-day header">T</div>
+                        <div class="mini-calendar-day header">F</div>
+                        <div class="mini-calendar-day header">S</div>
+
+                        <div class="mini-calendar-day">27</div>
+                        <div class="mini-calendar-day">28</div>
+                        <div class="mini-calendar-day">29</div>
+                        <div class="mini-calendar-day">30</div>
+                        <div class="mini-calendar-day">31</div>
+                        <div class="mini-calendar-day">1</div>
+                        <div class="mini-calendar-day">2</div>
+
+                        <div class="mini-calendar-day">3</div>
+                        <div class="mini-calendar-day">4</div>
+                        <div class="mini-calendar-day event">5</div>
+                        <div class="mini-calendar-day">6</div>
+                        <div class="mini-calendar-day event">7</div>
+                        <div class="mini-calendar-day">8</div>
+                        <div class="mini-calendar-day">9</div>
+
+                        <div class="mini-calendar-day">10</div>
+                        <div class="mini-calendar-day">11</div>
+                        <div class="mini-calendar-day">12</div>
+                        <div class="mini-calendar-day event">13</div>
+                        <div class="mini-calendar-day">14</div>
+                        <div class="mini-calendar-day">15</div>
+                        <div class="mini-calendar-day">16</div>
+
+                        <div class="mini-calendar-day">17</div>
+                        <div class="mini-calendar-day">18</div>
+                        <div class="mini-calendar-day">19</div>
+                        <div class="mini-calendar-day">20</div>
+                        <div class="mini-calendar-day event">21</div>
+                        <div class="mini-calendar-day">22</div>
+                        <div class="mini-calendar-day">23</div>
+
+                        <div class="mini-calendar-day">24</div>
+                        <div class="mini-calendar-day">25</div>
+                        <div class="mini-calendar-day">26</div>
+                        <div class="mini-calendar-day">27</div>
+                        <div class="mini-calendar-day event">28</div>
+                        <div class="mini-calendar-day">29</div>
+                        <div class="mini-calendar-day active">30</div>
+                    </div>
+                </div>
+
+                <div class="upcoming-events">
+                    <h3>Upcoming Events</h3>
+                    <div class="event-item">
+                        <div class="event-date">Sep 5, 2023</div>
+                        <div class="event-title">First Day of School</div>
+                        <div class="event-desc">All levels begin classes</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">Sep 13, 2023</div>
+                        <div class="event-title">Parent-Teacher Meeting</div>
+                        <div class="event-desc">Preschool & Kindergarten</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">Sep 21, 2023</div>
+                        <div class="event-title">Science Fair</div>
+                        <div class="event-desc">Primary & High School</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">Sep 28, 2023</div>
+                        <div class="event-title">Sports Day</div>
+                        <div class="event-desc">All levels participate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Calendar -->
+            <div class="calendar-main">
+                <div class="calendar-header">
+                    <h3>September 2023</h3>
+                    <div class="view-options">
+                        <button class="view-btn">Month</button>
+                        <button class="view-btn">Week</button>
+                        <button class="view-btn active">Day</button>
+                    </div>
+                </div>
+
+                <div class="calendar-grid">
+                    <div class="calendar-day header">Sunday</div>
+                    <div class="calendar-day header">Monday</div>
+                    <div class="calendar-day header">Tuesday</div>
+                    <div class="calendar-day header">Wednesday</div>
+                    <div class="calendar-day header">Thursday</div>
+                    <div class="calendar-day header">Friday</div>
+                    <div class="calendar-day header">Saturday</div>
+
+                    <!-- Week 1 -->
+                    <div class="calendar-day">
+                        <div class="day-number">27</div>
+                    </div>
+                    <div class="calendar-da
